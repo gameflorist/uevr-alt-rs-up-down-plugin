@@ -40,7 +40,25 @@ public:
     void on_xinput_get_state(uint32_t *retval, uint32_t user_index, XINPUT_STATE *state)
     {
 
-        // See branches `dpad` and `keyboard` for implementations.
+        if (state == NULL)
+            return;
+        if (!m_VR->is_using_controllers())
+            return; // If not using controllers, none of this applies.
+
+        // Right stick down
+        if (state->Gamepad.sThumbRY <= -25000)
+        {
+            state->Gamepad.wButtons |= (XINPUT_GAMEPAD_DPAD_DOWN);
+        }
+
+        // Right stick up
+        if (state->Gamepad.sThumbRY >= 25000)
+        {
+            state->Gamepad.wButtons |= (XINPUT_GAMEPAD_DPAD_UP);
+        }
+		
+        // Right stick Y-axis should always be 0 for the game.
+        state->Gamepad.sThumbRY = 0;
     }
 };
 // Actually creates the plugin. Very important that this global is created.
