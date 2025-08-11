@@ -6,6 +6,8 @@
 
 #include "uevr/Plugin.hpp"
 
+#define KEYDOWN false
+#define KEYUP true
 using namespace uevr;
 
 #define PLUGIN_LOG_ONCE(...)               \
@@ -34,13 +36,63 @@ public:
         API::get()->log_info("UEVR Initializing...");
     }
 
+    void send_key(WORD key, bool key_up)
+    {
+        INPUT input;
+        ZeroMemory(&input, sizeof(INPUT));
+        input.type = INPUT_KEYBOARD;
+        input.ki.wVk = key;
+        if (key_up)
+            input.ki.dwFlags = KEYEVENTF_KEYUP;
+        SendInput(1, &input, sizeof(INPUT));
+    }
+
     //*******************************************************************************************
     // This is the controller input routine. Everything happens here.
     //*******************************************************************************************
     void on_xinput_get_state(uint32_t *retval, uint32_t user_index, XINPUT_STATE *state)
     {
 
-        // See branches `dpad` and `keyboard` for implementations.
+        if (state == NULL)
+            return;
+        if (!m_VR->is_using_controllers())
+            return; // If not using controllers, none of this applies.
+
+        static bool UpKeyDown = false;
+        static bool DownKeyDown = false;
+
+        // Right stick down
+        if (state->Gamepad.sThumbRY <= -25000)
+        {
+            if (DownKeyDown == false)
+            {
+                send_key('D', KEYDOWN);
+                DownKeyDown = true;
+            }
+        }
+        else if (DownKeyDown == true)
+        {
+            send_key('D', KEYUP);
+            DownKeyDown = false;
+        }
+
+        // Right stick up
+        if (state->Gamepad.sThumbRY >= 25000)
+        {
+            if (UpKeyDown == false)
+            {
+                send_key('U', KEYDOWN);
+                UpKeyDown = true;
+            }
+        }
+        else if (UpKeyDown == true)
+        {
+            send_key('U', KEYUP);
+            UpKeyDown = false;
+        }
+
+        // Right stick Y-axis should always be 0 for the game.
+        state->Gamepad.sThumbRY = 0;
     }
 };
 // Actually creates the plugin. Very important that this global is created.
