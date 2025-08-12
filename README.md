@@ -45,4 +45,4 @@ Please note that game profiles may already contain input-altering plugins. So th
 
 Many thanks to Markmon, who's great [Index Controls Plugin](https://github.com/mark-mon/uevr-index-controls) served as a boilerplate for this plugin.
 
-And of course also many thanks to Praydog for creating UEVR and all others contributing to the ecosystem. It cannot be understated how much ever evolving value UEVR adds to the world of PCVR!
+And of course also many thanks to Praydog for creating UEVR and all others contributing to the ecosystem. It cannot be overstated how much ever evolving value UEVR adds to the world of PCVR!
