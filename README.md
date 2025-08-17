@@ -1,24 +1,26 @@
-# UEVR Plugin providing alternative `RightStick` up/down mappings
+# UEVR Plugin providing alternative `RightStick` mappings
 
-In UEVR the `RightStick` is normally used for turning. This leaves up/down unused in most cases. As the amount of buttons is often very limited in contrast to the functions/actions possible in a game, it is very handy to be able to map these inputs (e.g. to jump and crouch).
+In UEVR the `RightStick` is normally used for turning. This leaves the Y-axis (up/down) unused in most cases. As the amount of buttons is often very limited in contrast to the functions/actions possible in a game, it is very handy to be able to map these inputs (e.g. to jump and crouch). Furthermore players using roomscale turning also don't need the regular turning by X-axis (left/right).
 
-This plugin provides 2 variants mapping `RightStick` up/down to:
+This plugin provides 3 variants mapping `RightStick` directions:
 
-- Gamepad `DPad` up/down
-- Keyboard keys `U`/`D`
+- Y-axis (up/down) is mapped to Gamepad `DPad` up/down
+- Y-axis (up/down) is mapped to Keyboard keys `U`/`D`
+- X+Y-axis (up/down/left/right) is mapped to Keyboard keys `U`/`D`/`L`/`R`
 
-The keyboard mapping is preferable in most cases, as it does not duplicate two already mapped inputs (`DPad` up/down are accessible in UEVR via DPad Shifting). Furthermore many games do not allow custom mapping of gamepad inputs. So the keyboard variants gives you two new and fully customizable inputs.
+The keyboard mappings are preferable to the dpad-mapping in most cases, as it does not duplicate two already mapped inputs (`DPad` up/down are accessible in UEVR via DPad Shifting). Furthermore many games do not allow custom mapping of gamepad inputs. So the keyboard variants gives you new and fully customizable inputs.
 
 The downside of the keyboard mapping is, that the game switches from gamepad to keyboard input and back. It is possible, that games do not allow this or have problems with it. But mainly the only side effect should be a quick switch of on-screen input-hints.
 
 ## Download
 
-You can download the latest version from the [release page](https://github.com/gameflorist/uevr-alt-rs-up-down-plugin/releases).
+You can download the latest version from the [release page](https://github.com/gameflorist/uevr-alt-rs-mapping-plugin/releases).
 
 The downloaded zip file will contain DLL files for both variants:
 
 - `uevr-alt-rs-up-down-dpad.dll` for the `DPad` variant
-- `uevr-alt-rs-up-down-keyboard.dll` for the Keyboard variant
+- `uevr-alt-rs-up-down-keyboard.dll` for the Keyboard Y-axis (up/down) variant
+- `uevr-alt-rs-full-keyboard.dll` for the Keyboard X+Y-axis (up/down/left/right)
 
 ## Installation
 
@@ -45,4 +47,4 @@ Please note that game profiles may already contain input-altering plugins. So th
 
 Many thanks to Markmon, who's great [Index Controls Plugin](https://github.com/mark-mon/uevr-index-controls) served as a boilerplate for this plugin.
 
-And of course also many thanks to Praydog for creating UEVR and all others contributing to the ecosystem. It cannot be understated how much ever evolving value UEVR adds to the world of PCVR!
+And of course also many thanks to Praydog for creating UEVR and all others contributing to the ecosystem. It cannot be overstated how much ever evolving value UEVR adds to the world of PCVR!
