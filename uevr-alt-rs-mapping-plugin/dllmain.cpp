@@ -60,6 +60,8 @@ public:
 
         static bool UpKeyDown = false;
         static bool DownKeyDown = false;
+        static bool LeftKeyDown = false;
+        static bool RightKeyDown = false;
 
         // Right stick down
         if (state->Gamepad.sThumbRY <= -25000)
@@ -91,8 +93,39 @@ public:
             UpKeyDown = false;
         }
 
-        // Right stick Y-axis should always be 0 for the game.
+        // Right stick left
+        if (state->Gamepad.sThumbRX <= -25000)
+        {
+            if (LeftKeyDown == false)
+            {
+                send_key('L', KEYDOWN);
+                LeftKeyDown = true;
+            }
+        }
+        else if (LeftKeyDown == true)
+        {
+            send_key('L', KEYUP);
+            LeftKeyDown = false;
+        }
+
+        // Right stick right
+        if (state->Gamepad.sThumbRX >= 25000)
+        {
+            if (RightKeyDown == false)
+            {
+                send_key('R', KEYDOWN);
+                RightKeyDown = true;
+            }
+        }
+        else if (RightKeyDown == true)
+        {
+            send_key('R', KEYUP);
+            RightKeyDown = false;
+        }
+
+        // Right stick X/Y-axis should always be 0 for the game.
         state->Gamepad.sThumbRY = 0;
+        state->Gamepad.sThumbRX = 0;
     }
 };
 // Actually creates the plugin. Very important that this global is created.
