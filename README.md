@@ -13,7 +13,7 @@ The downside of the keyboard mapping is, that the game switches from gamepad to 
 
 ## Download
 
-You can download the latest version from the [release page](https://github.com/gameflorist/uevr-alt-rs-up-down-plugin/releases).
+You can download the latest version from the [release page](https://github.com/gameflorist/uevr-alt-rs-mapping-plugin/releases).
 
 The downloaded zip file will contain DLL files for both variants:
 

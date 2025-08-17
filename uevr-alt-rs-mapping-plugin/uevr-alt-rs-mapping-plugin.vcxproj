@@ -22,7 +22,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{b47fc2a4-acef-42e0-813b-6f5573c4d1b2}</ProjectGuid>
-    <RootNamespace>uevr-alt-rs-up-down-plugin</RootNamespace>
+    <RootNamespace>uevr-alt-rs-mapping-plugin</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
